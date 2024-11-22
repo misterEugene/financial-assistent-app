@@ -1,0 +1,22 @@
+{
+  "version": "1.1.4",
+  "name": "@oneliner/ol-paas",
+  "description": "Oneliner Backend",
+  "main": "index.js",
+  "scripts": {
+    "start": "export $(cat .env | grep -Ev '^#' | xargs); npx directus start",
+    "dev": "export EXTENSIONS_AUTO_RELOAD=true && npx directus start",
+    "build": "npx directus build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "directus": ">11.1.0",
+    "pg": "^8.11.3"
+  },
+  "engines": {
+    "node": "20.10.0",
+    "npm": "10.2.3"
+  }
+}

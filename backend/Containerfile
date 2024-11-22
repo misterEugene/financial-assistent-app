@@ -1,0 +1,14 @@
+from node:20.10.0-bullseye
+
+ARG GITLAB_PACKAGE_REGISTRY_TOKEN
+
+WORKDIR /app
+COPY . .
+
+RUN echo @oneliner:registry=https://git.oneln.ru/api/v4/packages/npm/ > .npmrc
+RUN npm config set -- //git.oneln.ru/:_authToken=${GITLAB_PACKAGE_REGISTRY_TOKEN}
+RUN cat .npmrc
+
+RUN npm ci
+
+CMD npm run start
